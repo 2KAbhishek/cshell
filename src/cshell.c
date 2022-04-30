@@ -344,3 +344,12 @@ void displayHelp()
     printf("cd\n");
 }
 
+void showHistory()
+{
+    int i;
+    for (i = 0; i < numCommands; i++)
+    {
+        printf("%d: %s\n", i, history[i]);
+    }
+}
+
