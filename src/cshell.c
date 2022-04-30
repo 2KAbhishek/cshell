@@ -317,3 +317,10 @@ void executeCommand(char **args, int background)
     }
 }
 
+void shellPrompt()
+{
+    char hostn[1204] = "";
+    gethostname(hostn, sizeof(hostn));
+    printf("%s@%s> %s>\n$> ", getenv("LOGNAME"), hostn, getcwd(currentDirectory, 1024));
+}
+
