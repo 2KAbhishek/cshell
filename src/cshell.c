@@ -466,3 +466,53 @@ int commandHandler(char *args[])
     }
     return 1;
 }
+
+int main(int argc, char *argv[], char **envp)
+{
+    char line[MAXLINE];
+    char *tokens[LIMIT];
+    int numTokens;
+
+    no_reprint_prmpt = 0;
+
+    pid = -10;
+
+    shellInit();
+    displayIntro();
+
+    environ = envp;
+
+    setenv("shell", getcwd(currentDirectory, 1024), 1);
+
+    while (TRUE)
+    {
+        if (no_reprint_prmpt == 0)
+        {
+            shellPrompt();
+        }
+        no_reprint_prmpt = 0;
+
+        memset(line, '\0', MAXLINE);
+
+        fgets(line, MAXLINE, stdin);
+
+        // Exit if the input is EOF
+        if (feof(stdin))
+        {
+            exit(0);
+        }
+
+        if ((tokens[0] = strtok(line, " \n\t")) == NULL)
+        {
+            continue;
+        }
+
+        numTokens = 1;
+        while ((tokens[numTokens] = strtok(NULL, " \n\t")) != NULL)
+        {
+            numTokens++;
+        }
+        commandHandler(tokens);
+    }
+    exit(0);
+}
