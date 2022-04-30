@@ -327,8 +327,8 @@ void shellPrompt()
 void displayIntro()
 {
     printf("\n====================================================\n");
-    printf("|            🐚 Welcome to C Shell 🐚              |\n");
-    printf("|🐚 Source: https://github.com/2kabhishek/cshell 🐚|\n");
+    printf("|                Welcome to C Shell                |\n");
+    printf("|   Source: https://github.com/2kabhishek/cshell   |\n");
     printf("====================================================\n\n");
     printf("  Type 'help' to see the list of built in commands\n\n\n");
 }
