@@ -372,3 +372,97 @@ int changeDir(char *args[])
     return 0;
 }
 
+int commandHandler(char *args[])
+{
+    int i = 0;
+    int j = 0;
+
+    int fileDescriptor;
+    int standardOut;
+
+    int aux;
+    int background = 0;
+
+    char *args_aux[256];
+
+    while (args[j] != NULL)
+    {
+        if ((strcmp(args[j], ">") == 0) || (strcmp(args[j], "<") == 0) || (strcmp(args[j], "&") == 0) || (strcmp(args[j], ";") == 0))
+        {
+            break;
+        }
+        args_aux[j] = args[j];
+        j++;
+    }
+
+    if (strcmp(args[0], "exit") == 0)
+    {
+        exit(0);
+    }
+    else if (strcmp(args[0], "help") == 0)
+    {
+        displayHelp();
+    }
+    else if (strcmp(args[0], "history") == 0)
+    {
+        showHistory();
+    }
+    else if (strcmp(args[0], "cd") == 0)
+    {
+        changeDir(args);
+    }
+    else
+    {
+        while (args[i] != NULL && background == 0)
+        {
+            if (strcmp(args[i], "&") == 0)
+            {
+                background = 1;
+            }
+            else if (strcmp(args[i], "|") == 0)
+            {
+                pipeHandler(args);
+                return 1;
+            }
+            else if (strcmp(args[i], "<") == 0)
+            {
+                aux = i + 1;
+                if (args[aux] == NULL || args[aux + 1] == NULL || args[aux + 2] == NULL)
+                {
+                    printf("Not enough input arguments\n");
+                    return -1;
+                }
+                else
+                {
+                    if (strcmp(args[aux + 1], ">") != 0)
+                    {
+                        printf("Usage: Expected '>' and found %s\n", args[aux + 1]);
+                        return -2;
+                    }
+                }
+                fileIOHandler(args_aux, args[i + 1], args[i + 3], 1);
+                return 1;
+            }
+
+            else if (strcmp(args[i], ">") == 0)
+            {
+                if (args[i + 1] == NULL)
+                {
+                    printf("Not enough input arguments\n");
+                    return -1;
+                }
+                fileIOHandler(args_aux, NULL, args[i + 1], 0);
+                return 1;
+            }
+            i++;
+        }
+
+        args_aux[i] = NULL;
+        executeCommand(args_aux, background);
+
+        numCommands++;
+        history[numCommands] = (char *)malloc(sizeof(char) * 256);
+        strcpy(history[numCommands], args[0]);
+    }
+    return 1;
+}
