@@ -282,3 +282,38 @@ void pipeHandler(char *args[])
         i++;
     }
 }
+
+void executeCommand(char **args, int background)
+{
+    int err = -1;
+
+    if ((pid = fork()) == -1)
+    {
+        printf("Child process could not be created\n");
+        return;
+    }
+
+    if (pid == 0)
+    {
+
+        signal(SIGINT, SIG_IGN);
+
+        setenv("parent", getcwd(currentDirectory, 1024), 1);
+
+        if (execvp(args[0], args) == err)
+        {
+            printf("Command not found");
+            kill(getpid(), SIGTERM);
+        }
+    }
+
+    if (background == 0)
+    {
+        waitpid(pid, NULL, 0);
+    }
+    else
+    {
+        printf("Process created with PID: %d\n", pid);
+    }
+}
+
