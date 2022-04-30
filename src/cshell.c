@@ -76,3 +76,11 @@ void shellInit()
         exit(EXIT_FAILURE);
     }
 }
+
+void signalHandler_child(int p)
+{
+    while (waitpid(-1, NULL, WNOHANG) > 0)
+    {
+    }
+    printf("\n");
+}
