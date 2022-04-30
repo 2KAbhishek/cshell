@@ -333,3 +333,14 @@ void displayIntro()
     printf("  Type 'help' to see the list of built in commands\n\n\n");
 }
 
+void displayHelp()
+{
+    printf("CShell: A simple shell\n");
+    printf("\n");
+    printf("Commands:\n");
+    printf("exit\n");
+    printf("help\n");
+    printf("history\n");
+    printf("cd\n");
+}
+
