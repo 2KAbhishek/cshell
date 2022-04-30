@@ -84,3 +84,18 @@ void signalHandler_child(int p)
     }
     printf("\n");
 }
+
+void signalHandler_int(int p)
+{
+    if (kill(pid, SIGTERM) == 0)
+    {
+        printf("\nProcess %d received a SIGINT signal\n", pid);
+        no_reprint_prmpt = 1;
+        exit(EXIT_SUCCESS);
+    }
+    else
+    {
+        printf("\n");
+    }
+}
+
