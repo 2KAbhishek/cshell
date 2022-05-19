@@ -26,7 +26,7 @@
 <h3>Short sweet headline with 🎇🎉</h3>
 
 <figure>
-  <img src= "https://raw.githubusercontent.com/2KAbhishek/cshell/main/images/screenshot.jpg" alt="cshell Demo" style="width:100%">
+  <img src= "images/screenshot.jpg" alt="cshell Demo" style="width:100%">
   <br/>
   <figcaption>cshell screenshot</figcaption>
 </figure>
