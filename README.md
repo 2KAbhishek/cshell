@@ -26,7 +26,7 @@
 <h3>Not a seashell ⛵🐚</h3>
 
 <figure>
-  <img src= "images/screenshot.jpg" alt="cshell Demo" style="width:100%">
+  <img src= "images/screenshot.jpg" alt="cshell Demo" style="width:auto">
   <br/>
   <figcaption>cshell screenshot</figcaption>
 </figure>
