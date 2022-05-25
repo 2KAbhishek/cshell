@@ -23,7 +23,7 @@
 <a href="https://github.com/2KAbhishek?tab=followers">
 <img alt="Followers" src="https://img.shields.io/github/followers/2kabhishek?color=222&style=plastic&label=Followers"> </a>
 
-<h3>Short sweet headline with 🎇🎉</h3>
+<h3>Not a seashell ⛵🐚</h3>
 
 <figure>
   <img src= "images/screenshot.jpg" alt="cshell Demo" style="width:100%">
@@ -35,17 +35,20 @@
 
 ## What is this
 
-cshell is a `<utility/tool/feature>` that allows `<insert_target_audience>` to do `<action/task_it_does>`.
+cshell is an alternative to the standard sh shell written entirely in c and all in a single file within ~500 LOC.
+
+It supports pipes, redirections, history, and more. Comes with a customized prompt.
 
 ## Inspiration
 
-cshell was inspired by `<reason/idea>`.
+Most Operating Systems classes have a project for creating a shell. I never got to around to do that.
+This is my shot at creating my own shell.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
-- You have installed the latest version of `<coding_language/dependency/requirement_1>`
+- You have installed the latest version of `gcc, make`
 
 ## Getting cshell
 
@@ -54,51 +57,36 @@ To install cshell, follow these steps:
 ```bash
 git clone https://github.com/2kabhishek/cshell
 cd cshell
-<install_command>
+make cshell
 ```
 
 ## Using cshell
 
+You can link the cshell executable to your $PATH or just run it from the command line.
+
 ```bash
-USAGE:
-    command [FLAGS] [OPTIONS]
-
-FLAGS:
-    -h, --help              Prints help information.
-
-OPTIONS:
-    -o, --option <value>    Option description.
-    Options are: a, b. [default: a]
-
-Example:
-
-
+./cshell
 ```
+
+This will start the shell and display the a help message along with the prompt.
+You can use it like any other shell.
 
 ## How it was built
 
-cshell was built using `<tech/library>`
+cshell was built using `c`
 
 ## Challenges faced
 
-While building cshell the main challenges were `<issue/difficulty>`
+- Struggled somewhat in the begining to handle signals, but eventually got it working.
 
 ## What I learned
 
-While building cshell I `<learned/accomplished>` about `<learning/accomplishment>`
+- Learned a lot about `c` and it's different syscalls.
+- Understood the internal workings pipes and redirections.
 
 ## What's next
 
-Planning to add `<feature/module>`.
-
-### To-Do
-
-- [x] Setup repo
-- [ ] Think real hard
-- [ ] Start typing
-- [ ] Change me
-- [ ] Update README
-- [ ] Finish it
+Clean up the code and make it more readable, add more features, and make it more robust.
 
 Hit the ⭐ button if you found this useful.
 
