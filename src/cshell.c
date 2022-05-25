@@ -335,7 +335,7 @@ void displayIntro()
 
 void displayHelp()
 {
-    printf("CShell: A simple shell\n");
+    printf("CShell: Not a seashell\n");
     printf("\n");
     printf("Commands:\n");
     printf("exit\n");
