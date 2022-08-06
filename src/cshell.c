@@ -387,7 +387,7 @@ int commandHandler(char *args[])
 
     while (args[j] != NULL)
     {
-        if ((strcmp(args[j], ">") == 0) || (strcmp(args[j], "<") == 0) || (strcmp(args[j], "&") == 0) || (strcmp(args[j], ";") == 0))
+        if ((strcmp(args[j], ">") == 0) || (strcmp(args[j], "<") == 0))
         {
             break;
         }
@@ -415,6 +415,31 @@ int commandHandler(char *args[])
     {
         while (args[i] != NULL && background == 0)
         {
+            if (strcmp(args[i], ";") == 0)
+            {
+                args_aux[i] = NULL;
+                executeCommand(args_aux, background);
+                i++;
+                j = 0;
+
+                int args_i = i;
+                while (args[args_i] != NULL)
+                {
+                    args_aux[j] = args[args_i];
+                    j++;
+                    args_i++;
+                }
+
+                args_aux[j] = NULL;
+
+                args_i = i;
+                for (j = 0; args[args_i] != NULL; args_i++, j++)
+                {
+                    args[j] = args[args_i];
+                }
+                args[j] = NULL;
+                continue;
+            }
             if (strcmp(args[i], "&") == 0)
             {
                 background = 1;
